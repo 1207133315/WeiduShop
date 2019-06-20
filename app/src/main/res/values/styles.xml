@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">#ffffff</item>
+        <item name="colorControlActivated">#ffffff</item>
+    </style>
+
+    <!--个人中心页面的外部布局-->
+    <style name="personal_ll">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/dp_24</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <!--个人中心页面的图片-->
+    <style name="personal_img">
+        <item name="android:layout_width">@dimen/dp_24</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+    </style>
+
+    <!--个人中心页面的内部布局-->
+    <style name="personal_lltwo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_24</item>
+        <item name="android:layout_marginLeft">@dimen/dp_24</item>
+        <item name="android:layout_marginRight">@dimen/dp_24</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!--个人中心页面的文字-->
+    <style name="personal_tv">
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_22</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <!--订单页面的RadioButton-->
+    <style name="intent_rb">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dp_10</item>
+        <item name="android:layout_marginTop">@dimen/dp_5</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

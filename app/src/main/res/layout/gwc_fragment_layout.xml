@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:background="#eeeeee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_weight="1"
+        ></android.support.v7.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+
+        >
+
+        <CheckBox
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:id="@+id/quanxuan"
+            android:text="全选"
+            />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:id="@+id/price"
+            android:layout_weight="1"
+            android:text="总价:"
+            android:textSize="22sp"
+            android:textColor="#ff0022"
+            android:gravity="center_vertical"
+            />
+
+        <Button
+            android:id="@+id/go"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="match_parent"
+            android:background="#ff5f71"
+            android:text="去结算"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</LinearLayout>
