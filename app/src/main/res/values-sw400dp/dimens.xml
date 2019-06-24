@@ -420,4 +420,5 @@
 	<dimen name="sp_40">44.4444sp</dimen>
 	<dimen name="sp_42">46.6667sp</dimen>
 	<dimen name="sp_48">53.3333sp</dimen>
+	<dimen name="sp_64">71.1111sp</dimen>
 </resources>

@@ -1,6 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/mine_back"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200" />
+    <LinearLayout
 
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape3"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_142">
+        <TextView
+            android:id="@+id/mine_nickname"
+            android:layout_marginTop="@dimen/dp_60"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@mipmap/icon_information"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/grzl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="个人资料"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_14"/>
+                <View
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@mipmap/icon_circle"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/wdqz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="我的圈子"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_14"/>
+                <View
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@mipmap/icon_foot"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/wdzj"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="我的足迹"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_14"/>
+                <View
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@mipmap/icon_wallet"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/wdqb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="我的钱包"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_14"/>
+                <View
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@mipmap/icon_address"
+                android:layout_marginLeft="@dimen/dp_24"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/wdshdz"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:text="我的收货地址"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/sp_14"/>
+                <View
+                    android:layout_marginTop="@dimen/dp_3"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_1"
+                    android:background="#ededed"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_102"
+        android:id="@+id/mine_touxiang"
+        android:layout_width="@dimen/dp_80"
+        app:roundAsCircle="true"
+        android:layout_height="@dimen/dp_80"
+        />
+</RelativeLayout>
