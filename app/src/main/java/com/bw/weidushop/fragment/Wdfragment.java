@@ -1,16 +1,44 @@
 package com.bw.weidushop.fragment;
 
-import com.bw.weidushop.R;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-/**
- * com.baway.rxretrofitmvpdemo.fragment
- *
- * @author 李宁康
- * @date 2019 2019/05/16 09:40
- */
+import com.bw.weidushop.R;
+import com.bw.weidushop.activity.WodbActivity;
+import com.bw.weidushop.bean.User;
+import com.bw.weidushop.dao.GetUser;
+import com.facebook.drawee.view.SimpleDraweeView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
+
 public class Wdfragment extends BaseFragment {
 
 
+    @BindView(R.id.mine_back)
+    SimpleDraweeView mineBack;
+    @BindView(R.id.mine_nickname)
+    TextView mineNickname;
+    @BindView(R.id.grzl)
+    TextView grzl;
+    @BindView(R.id.wdqz)
+    TextView wdqz;
+    @BindView(R.id.wdzj)
+    TextView wdzj;
+    @BindView(R.id.wdqb)
+    TextView wdqb;
+    @BindView(R.id.wdshdz)
+    TextView wdshdz;
+    @BindView(R.id.mine_touxiang)
+    SimpleDraweeView mineTouxiang;
+    Unbinder unbinder;
 
     @Override
     protected int getLayoutId() {
@@ -19,7 +47,33 @@ public class Wdfragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        User user = GetUser.getuser();
+        String headPic = user.getHeadPic();
+        mineBack.setImageURI(headPic);
+        mineTouxiang.setImageURI(headPic);
+    }
 
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.grzl:
+                break;
+            case R.id.wdzj:
+                break;
+            case R.id.wdqb:
+                Intent intent2=new Intent(getContext(),WodbActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.wdshdz:
+                break;
+        }
     }
 }
 

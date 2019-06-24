@@ -2,6 +2,8 @@ package com.bw.weidushop.application;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 /**
  * com.bw.weidushop.application
  *
@@ -22,6 +24,7 @@ public class MyApplication extends Application {
         super.onCreate();
         //将应用程序本身的上下文实例赋值给instance变量
         this.instance = MyApplication.this;
+        Fresco.initialize(this);
     }
 
 
