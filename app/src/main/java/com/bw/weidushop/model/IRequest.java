@@ -1,7 +1,6 @@
 package com.bw.weidushop.model;
 
 
-
 import com.bw.weidushop.bean.AddressBean;
 import com.bw.weidushop.bean.BannerBean;
 import com.bw.weidushop.bean.DetailBean;
@@ -35,6 +34,7 @@ public interface IRequest {
     //搜索
     @GET("small/v1/findCommodityByKeyword")
     Observable<Result<List<Goods>>> show(@Query("keyword") String keyword, @Query("page") String page, @Query("count") String count);
+
     //注册
     @FormUrlEncoded
     @POST("small/user/v1/register")
@@ -49,23 +49,28 @@ public interface IRequest {
     //首页列表
     @GET("small/commodity/v1/commodityList")
     Observable<Result<SyBean>> showMain();
+
     //轮播图
     @GET("small/commodity/v1/bannerShow")
     Observable<Result<List<BannerBean>>> banner();
+
     //查询购物车
     @GET("small/order/verify/v1/findShoppingCart")
     Observable<Result<List<ShopCarBean>>> findShopCar(@Header("userId") int userId, @Header("sessionId") String sessionId);
 
+    //根据id查详情
     @GET("small/commodity/v1/findCommodityDetailsById")
-    Observable<Result<DetailBean>> detail(@Query("commodityId") String commodityId);
+    Observable<Result<DetailBean>> detail(
+            @Header("userId") int userId,
+            @Header("sessionId") String sessionId,
+            @Query("commodityId") int commodityId);
 
     @GET("small/commodity/v1/findCommodityByKeyword")
     Observable<Result<List<SearchBean>>> searchBykeyword(@Query("keyword") String keyword, @Query("page") String page, @Query("count") String count);
 
     @FormUrlEncoded
     @PUT("small/order/verify/v1/syncShoppingCart")
-    Observable<Result> addShopCar(@Header("userId") String userId, @Header("sessionId") String sessionId, @Field("data") String data);
-
+    Observable<Result> addShopCar(@Header("userId") int userId, @Header("sessionId") String sessionId, @Field("data") String data);
 
 
     //圈子列表
@@ -85,9 +90,24 @@ public interface IRequest {
 
     //我的圈子
     @GET("small/circle/verify/v1/findMyCircleById")
-    Observable<Result<List<QuanZiBean>>> myQuanzi(@Header("userId") String userId, @Header("sessionId") String sessionId, @Query("page") String page, @Query("count") String count);
+    Observable<Result<List<QuanZiBean>>> myQuanzi(@Header("userId") String userId,
+                                                  @Header("sessionId") String sessionId,
+                                                  @Query("page") String page,
+                                                  @Query("count") String count);
 
     //收货地址列表
     @GET("small/user/verify/v1/receiveAddressList")
-    Observable<Result<List<AddressBean>>> addressList(@Header("userId") String userId, @Header("sessionId") String sessionId);
+    Observable<Result<List<AddressBean>>> addressList(@Header("userId") long userId,
+                                                      @Header("sessionId") String sessionId);
+
+
+    //添加订单
+    @FormUrlEncoded
+    @POST("small/order/verify/v1/createOrder")
+    Observable<Result> createOrder(@Header("userId") int userId,
+                                   @Header("sessionId") String sessionId,
+                                   @Field("orderInfo") String orderInfo,
+                                   @Field("totalPrice") double totalPrice,
+                                   @Field("addressId") int addressId);
+
 }

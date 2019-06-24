@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bw.weidushop.R;
-import com.bw.weidushop.activity.MainActivity;
 import com.bw.weidushop.activity.SearchActivity;
 import com.bw.weidushop.adapter.RecyclerViewAdpater;
 import com.bw.weidushop.bean.BannerBean;
@@ -26,12 +25,10 @@ import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.SyBean;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.core.RequestDataInterface;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.presenter.BannerPresenter;
 import com.bw.weidushop.presenter.ShowSyPresenter;
 import com.stx.xhb.xbanner.XBanner;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +64,7 @@ public class Syfragment extends Fragment implements RequestDataInterface {
     }
 
     private void initView(View view) {
-        final User user = GetUser.getuser();
+        final User user = GetDao.getuser();
         sessionId=user.getSessionId();
 
         search = view.findViewById(R.id.search);

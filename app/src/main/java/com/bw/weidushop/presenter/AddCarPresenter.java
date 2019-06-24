@@ -1,25 +1,23 @@
 package com.bw.weidushop.presenter;
 
-
 import com.bw.weidushop.core.RequestDataInterface;
 import com.bw.weidushop.model.IRequest;
 
 import io.reactivex.Observable;
 
 /**
- * com.baway.rxretrofitmvpdemo.presenter
+ * com.bw.weidushop.presenter
  *
  * @author 李宁康
- * @date 2019 2019/05/22 15:04
+ * @date 2019 2019/06/22 09:48
  */
-public class DetailPresenter extends BasePresenter {
-
-    public DetailPresenter(RequestDataInterface presenterInterface) {
+public class AddCarPresenter extends BasePresenter {
+    public AddCarPresenter(RequestDataInterface presenterInterface) {
         super(presenterInterface);
     }
 
     @Override
     public Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.detail((int)args[0],(String)args[1],(int) args[2]);
+        return iRequest.addShopCar((int)args[0],(String)args[1],(String)args[2]);
     }
 }

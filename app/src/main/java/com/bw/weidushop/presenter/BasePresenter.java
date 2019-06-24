@@ -46,15 +46,15 @@ public abstract class BasePresenter {
         disposable = getModel(iRequest, args)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn(new Function<Throwable, Result>() {
-                    @Override
-                    public Result apply(Throwable e) throws Exception {
-                        e.printStackTrace();
-                        final Result result = returnExpection(e);
-                        Log.d("dd", "apply: " + result.getMessage());
-                        return result;
-                    }
-                })
+//                .onErrorReturn(new Function<Throwable, Result>() {
+//                    @Override
+//                    public Result apply(Throwable e) throws Exception {
+//                        e.printStackTrace();
+//                        final Result result = returnExpection(e);
+//                        Log.d("dd", "apply: " + result.getMessage());
+//                        return result;
+//                    }
+//                })
                 .subscribe(new Consumer<Result>() {
                     @Override
                     public void accept(Result result) throws Exception {
