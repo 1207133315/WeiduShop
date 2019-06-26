@@ -125,7 +125,7 @@ public interface IRequest {
     Observable<Result> addComment(@Header("userId") long userId,
                                   @Header("sessionId") String sessionId,
                                   @Body MultipartBody body);
-
+    @GET("small/user/verify/v1/receiveAddressList")
     Observable<Result<List<AddressBean>>> addressList(@Header("userId") String userId, @Header("sessionId") String sessionId);
 
     @GET("small/user/verify/v1/findUserWallet")
@@ -139,7 +139,6 @@ public interface IRequest {
                                                 @Header("sessionId") String sessionid,
                                                 @Field("id") int id);
 
-                                                @Field("id")int id);
 
     //添加收货地址
     @FormUrlEncoded

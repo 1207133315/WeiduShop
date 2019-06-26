@@ -7,13 +7,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -35,17 +28,8 @@
         <activity android:name=".activity.WodbActivity"></activity>
         <activity android:name=".activity.PingActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
-
         <activity android:name=".activity.GrzlActivity"></activity>
-        <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.BaseActivity" />
-        <activity android:name=".activity.WodbActivity" />
-        <activity android:name=".activity.PingActivity" />
-        <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.DetailActivity" />
-        <activity android:name=".activity.DingdanActivity" />
-        <activity android:name=".activity.ShdzActivity" />
-        <activity android:name=".activity.NewaddShouhuoActivity" />
         <activity android:name=".activity.MyQuanziActivity"></activity>
         <activity android:name=".activity.DingdanActivity"></activity>
         <activity android:name=".activity.ShdzActivity"></activity>

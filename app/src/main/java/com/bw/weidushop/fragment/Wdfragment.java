@@ -60,7 +60,7 @@ public class Wdfragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz})
+
   /*  @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -90,8 +90,8 @@ public class Wdfragment extends BaseFragment {
                 break;
 
             case R.id.wdqz:
-                Intent intent1=new Intent(getContext(),MyQuanziActivity.class);
-                startActivity(intent1);
+                Intent intent4=new Intent(getContext(),MyQuanziActivity.class);
+                startActivity(intent4);
                 break;
         }
     }
