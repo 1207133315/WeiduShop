@@ -15,11 +15,14 @@ import com.bw.weidushop.bean.User;
 import java.util.List;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Query;
@@ -109,5 +112,14 @@ public interface IRequest {
                                    @Field("orderInfo") String orderInfo,
                                    @Field("totalPrice") double totalPrice,
                                    @Field("addressId") int addressId);
-
+    //发布圈子
+    @POST("small/circle/verify/v1/releaseCircle")
+    Observable<Result> releaseCircle(@Header("userId")long userId,
+                                     @Header("sessionId")String sessionId,
+                                     @Body MultipartBody body);
+    //发表评论
+    @POST("small/commodity/verify/v1/addCommodityComment")
+    Observable<Result> addComment(@Header("userId")long userId,
+                                     @Header("sessionId")String sessionId,
+                                     @Body MultipartBody body);
 }

@@ -53,6 +53,9 @@ dependencies {
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     //Fresco
 
-    implementation 'com.facebook.fresco:fresco:1.9.0'
+    implementation 'com.facebook.fresco:fresco:0.14.1'
+    //ImagePickers
+    implementation 'com.jaikydota.imagespickers:imagespickers:1.0.6'
+
 
 }

@@ -10,8 +10,9 @@ import android.widget.TextView;
 import com.bw.weidushop.R;
 import com.bw.weidushop.activity.WodbActivity;
 import com.bw.weidushop.bean.User;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.facebook.drawee.view.SimpleDraweeView;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,18 +48,18 @@ public class Wdfragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        User user = GetUser.getuser();
+        User user = GetDao.getuser();
         String headPic = user.getHeadPic();
         mineBack.setImageURI(headPic);
         mineTouxiang.setImageURI(headPic);
     }
 
 
-    @Override
+  /*  @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
+    }*/
 
     @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz})
     public void onViewClicked(View view) {

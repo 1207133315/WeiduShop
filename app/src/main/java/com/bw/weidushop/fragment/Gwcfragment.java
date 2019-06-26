@@ -145,6 +145,7 @@ public class Gwcfragment extends BaseFragment {
 
                 intent.putExtra("list", (Serializable) list);
                 startActivity(intent);
+                getActivity().finish();
                 break;
         }
     }

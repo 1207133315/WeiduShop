@@ -14,6 +14,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -82,6 +83,7 @@ public class OrderlistAdapter extends BaseMultiItemQuickAdapter<Orderlist.OrderL
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         Intent intent=new Intent(mContext,PingActivity.class);
                         Orderlist.OrderListBean.DetailListBean bean = item.getDetailList().get(position);
+                        intent.putExtra("orderId",item.getOrderId());
                         intent.putExtra("bean",bean);
                         mContext.startActivity(intent);
                     }

@@ -14,11 +14,12 @@ import com.bw.weidushop.bean.User;
 public class GetDao {
     public static User getuser(){
         UserDao userDao = DaoMaster.newDevSession(MyApplication.getInstance(), UserDao.TABLENAME).getUserDao();
-         User user = userDao.queryBuilder().where(UserDao.Properties.IsLogin.eq(1)).unique();
+         User user = userDao.queryBuilder().where(UserDao.Properties.IsLogin.eq(0)).unique();
          return user;
     }
 
     public static AddCarDataDao getShopCarDao(){
       return  DaoMaster.newDevSession(MyApplication.getInstance(),AddCarDataDao.TABLENAME ).getAddCarDataDao();
     }
+
 }

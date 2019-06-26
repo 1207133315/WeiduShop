@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity implements RequestDataInterface 
                 User user = userResult.getResult();
                 user.password=s;
                 Toast.makeText(this, "" + userResult.getMessage(), Toast.LENGTH_SHORT).show();
-                user.isLogin=1;
+                user.isLogin=0;
                 userDao.insertOrReplace(user);
 
                  Intent intent = new Intent(LoginActivity.this, MainActivity.class);
