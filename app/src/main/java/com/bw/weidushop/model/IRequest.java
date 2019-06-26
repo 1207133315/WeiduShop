@@ -12,10 +12,12 @@ import com.bw.weidushop.bean.SearchBean;
 import com.bw.weidushop.bean.ShopCarBean;
 import com.bw.weidushop.bean.SyBean;
 import com.bw.weidushop.bean.User;
+import com.bw.weidushop.bean.UserWalletBean;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -90,4 +92,24 @@ public interface IRequest {
     //收货地址列表
     @GET("small/user/verify/v1/receiveAddressList")
     Observable<Result<List<AddressBean>>> addressList(@Header("userId") String userId, @Header("sessionId") String sessionId);
+
+    @GET("small/user/verify/v1/findUserWallet")
+    Observable<Result<UserWalletBean>> findUserWallet(@Header("userId") int userId,
+                                        @Header("sessionId") String sessionid,
+                                        @Query("page") int page,
+                                        @Query("count") int count);
+    @FormUrlEncoded
+    @POST("small/user/verify/v1/setDefaultReceiveAddress")
+    Observable<Result> setDefaultReceiveAddress(@Header("userId") int userid,
+                                                @Header("sessionId") String sessionid,
+                                                @Field("id")int id);
+    @FormUrlEncoded
+    @POST("small/user/verify/v1/addReceiveAddress")
+    Observable<Result> addAddress(@Header("userId") int userid,
+                                        @Header("sessionId") String sessionid,
+                                        @Field("realName") String realName,
+                                        @Field("phone") String phone,
+                                        @Field("address") String address,
+                                        @Field("zipCode") String zipCode);
+
 }

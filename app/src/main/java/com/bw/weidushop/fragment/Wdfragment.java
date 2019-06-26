@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bw.weidushop.R;
+import com.bw.weidushop.activity.ShdzActivity;
 import com.bw.weidushop.activity.WodbActivity;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.dao.GetUser;
@@ -66,12 +67,17 @@ public class Wdfragment extends BaseFragment {
             case R.id.grzl:
                 break;
             case R.id.wdzj:
+//                Intent intent3=new Intent(getContext(),MyfootActivity.class);
+//                startActivity(intent3);
                 break;
             case R.id.wdqb:
                 Intent intent2=new Intent(getContext(),WodbActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.wdshdz:
+                Intent intent=new Intent(getContext(),ShdzActivity.class);
+                startActivity(intent);
+
                 break;
         }
     }

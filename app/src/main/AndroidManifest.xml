@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.weidushop">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
 
         android:allowBackup="true"
@@ -24,6 +27,8 @@
         <activity android:name=".activity.WodbActivity"></activity>
         <activity android:name=".activity.PingActivity"></activity>
         <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.ShdzActivity"></activity>
+        <activity android:name=".activity.NewaddShouhuoActivity"></activity>
     </application>
 
 </manifest>
