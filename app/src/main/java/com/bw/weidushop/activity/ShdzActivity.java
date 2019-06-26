@@ -16,7 +16,7 @@ import com.bw.weidushop.bean.AddressBean;
 import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.core.RequestDataInterface;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.presenter.AddressPresenter;
 import com.bw.weidushop.presenter.SetDefaultReceiveAddressPresenter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -44,7 +44,7 @@ public class ShdzActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        final User user = GetUser.getuser();
+        final User user = GetDao.getuser();
         new AddressPresenter(new RequestDataInterface() {
             @Override
             public void success(Object obj, Object... args) {

@@ -13,6 +13,5 @@ public class AddressPresenter extends BasePresenter {
     @Override
     public Observable getModel(IRequest iRequest, Object... args) {
         return iRequest.addressList((String)args[0],(String)args[1]);
-        return iRequest.addressList((long)args[0],(String)args[1]);
     }
 }
