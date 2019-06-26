@@ -3,22 +3,15 @@
     android:layout_width="wrap_content"
     android:orientation="horizontal"
     android:layout_height="wrap_content">
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
-        android:id="@+id/checkbox"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dp_20"
-
+        android:layout_marginTop="@dimen/dp_10"
         android:paddingRight="@dimen/dp_10"
-        android:background="@drawable/lay_yy"
-
-
+        android:layout_marginHorizontal="@dimen/dp_5"
+        android:background="@drawable/lay_xx"
         >
 
 

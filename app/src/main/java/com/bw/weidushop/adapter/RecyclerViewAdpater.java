@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 
 import com.bw.weidushop.R;
+import com.bw.weidushop.activity.DetailActivity;
 import com.bw.weidushop.adapter.viewholder.AbstractViewHolder;
 import com.bw.weidushop.adapter.viewholder.MlssViewHolder;
 import com.bw.weidushop.adapter.viewholder.PzshViewHolder;
@@ -56,9 +57,9 @@ public class RecyclerViewAdpater extends RecyclerView.Adapter<RecyclerView.ViewH
        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent intent = new Intent(context, DetailActivity.class);
-                //intent.putExtra("id",list.get(position).commodityId);
-                //context.startActivity(intent);
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("id",list.get(position).commodityId);
+                context.startActivity(intent);
             }
         });
     }

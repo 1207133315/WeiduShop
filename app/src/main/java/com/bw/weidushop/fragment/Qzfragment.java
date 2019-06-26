@@ -12,13 +12,12 @@ import android.widget.Toast;
 
 
 import com.bw.weidushop.R;
-import com.bw.weidushop.activity.MainActivity;
 import com.bw.weidushop.adapter.QuanZiAdapter;
 import com.bw.weidushop.bean.QuanZiBean;
 import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.core.RequestDataInterface;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.presenter.DianZanPresenter;
 import com.bw.weidushop.presenter.QuanZiPresenter;
 import com.bw.weidushop.presenter.UnDianZanPresenter;
@@ -49,7 +48,7 @@ public class Qzfragment extends Fragment implements RequestDataInterface {
         final View view = View.inflate(getActivity(), R.layout.qz_fragment_layout, null);
         presenter = new QuanZiPresenter(this);
         adapter = new QuanZiAdapter(getActivity());
-        user = GetUser.getuser();
+        user = GetDao.getuser();
         sessionId= user.getSessionId();
         initView(view);
        // dianzan();
