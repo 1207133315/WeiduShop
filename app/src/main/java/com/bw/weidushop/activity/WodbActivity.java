@@ -10,7 +10,7 @@ import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.bean.UserWalletBean;
 import com.bw.weidushop.core.RequestDataInterface;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.dao.UserDao;
 import com.bw.weidushop.presenter.WalletPresenter;
 
@@ -26,7 +26,7 @@ public class WodbActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        User user = GetUser.getuser();
+        User user = GetDao.getuser();
         Log.d("WodbActivity0", "user.getUserId():" + user.getUserId()+"/"+user.getSessionId());
         new WalletPresenter(new RequestDataInterface() {
             @Override

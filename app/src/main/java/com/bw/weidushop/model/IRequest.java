@@ -3,6 +3,7 @@ package com.bw.weidushop.model;
 
 import com.bw.weidushop.bean.AddressBean;
 import com.bw.weidushop.bean.BannerBean;
+import com.bw.weidushop.bean.BrowseListBean;
 import com.bw.weidushop.bean.DetailBean;
 import com.bw.weidushop.bean.Goods;
 import com.bw.weidushop.bean.QuanZiBean;
@@ -100,11 +101,6 @@ public interface IRequest {
                                                   @Query("page") String page,
                                                   @Query("count") String count);
 
-    //收货地址列表
-    @GET("small/user/verify/v1/receiveAddressList")
-    Observable<Result<List<AddressBean>>> addressList(@Header("userId") long userId,
-                                                      @Header("sessionId") String sessionId);
-
 
     //添加订单
     @FormUrlEncoded
@@ -114,36 +110,60 @@ public interface IRequest {
                                    @Field("orderInfo") String orderInfo,
                                    @Field("totalPrice") double totalPrice,
                                    @Field("addressId") int addressId);
+
     //发布圈子
     @POST("small/circle/verify/v1/releaseCircle")
-    Observable<Result> releaseCircle(@Header("userId")long userId,
-                                     @Header("sessionId")String sessionId,
-                                     @Body MultipartBody body);
-    //发表评论
-    @POST("small/commodity/verify/v1/addCommodityComment")
-    Observable<Result> addComment(@Header("userId")long userId,
-                                     @Header("sessionId")String sessionId,
+    Observable<Result> releaseCircle(@Header("userId") long userId,
+                                     @Header("sessionId") String sessionId,
                                      @Body MultipartBody body);
 
+    //发表评论
+    @POST("small/commodity/verify/v1/addCommodityComment")
+    Observable<Result> addComment(@Header("userId") long userId,
+                                  @Header("sessionId") String sessionId,
+                                  @Body MultipartBody body);
+
+    //收货地址列表
+    @GET("small/user/verify/v1/receiveAddressList")
     Observable<Result<List<AddressBean>>> addressList(@Header("userId") String userId, @Header("sessionId") String sessionId);
 
     @GET("small/user/verify/v1/findUserWallet")
     Observable<Result<UserWalletBean>> findUserWallet(@Header("userId") int userId,
-                                        @Header("sessionId") String sessionid,
-                                        @Query("page") int page,
-                                        @Query("count") int count);
+                                                      @Header("sessionId") String sessionid,
+                                                      @Query("page") int page,
+                                                      @Query("count") int count);
+
     @FormUrlEncoded
     @POST("small/user/verify/v1/setDefaultReceiveAddress")
     Observable<Result> setDefaultReceiveAddress(@Header("userId") int userid,
                                                 @Header("sessionId") String sessionid,
-                                                @Field("id")int id);
+                                                @Field("id") int id);
+
     @FormUrlEncoded
     @POST("small/user/verify/v1/addReceiveAddress")
     Observable<Result> addAddress(@Header("userId") int userid,
-                                        @Header("sessionId") String sessionid,
-                                        @Field("realName") String realName,
-                                        @Field("phone") String phone,
-                                        @Field("address") String address,
-                                        @Field("zipCode") String zipCode);
+                                  @Header("sessionId") String sessionid,
+                                  @Field("realName") String realName,
+                                  @Field("phone") String phone,
+                                  @Field("address") String address,
+                                  @Field("zipCode") String zipCode);
 
+    @GET("small/commodity/verify/v1/browseList")
+    Observable<Result<List<BrowseListBean>>> browseList(@Header("userId") int userId,
+                                                  @Header("sessionId") String sessionid,
+                                                  @Query("page") int page,
+                                                  @Query("count") int count);
+    @FormUrlEncoded
+    @PUT("small/user/verify/v1/modifyUserNick")
+    Observable<Result> modifyUserNick(@Header("userId") long userid,
+                                      @Header("sessionId") String sessionid,
+                                      @Field("nickName")String nickName);
+
+    @FormUrlEncoded
+    @PUT("small/user/verify/v1/modifyUserPwd")
+    Observable<Result> modifyUserPwd(@Header("userId") long userid,
+                                     @Header("sessionId") String sessionid,
+                                     @Field("oldPwd")String oldPwd,
+                                     @Field("newPwd")String newPwd
+    );
 }

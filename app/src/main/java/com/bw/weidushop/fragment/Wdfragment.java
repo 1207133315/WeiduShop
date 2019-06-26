@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bw.weidushop.R;
+import com.bw.weidushop.activity.GrzlActivity;
+import com.bw.weidushop.activity.MyfootActivity;
 import com.bw.weidushop.activity.ShdzActivity;
 import com.bw.weidushop.activity.WodbActivity;
 import com.bw.weidushop.bean.User;
@@ -40,7 +42,7 @@ public class Wdfragment extends BaseFragment {
     TextView wdshdz;
     @BindView(R.id.mine_touxiang)
     SimpleDraweeView mineTouxiang;
-    Unbinder unbinder;
+
 
     @Override
     protected int getLayoutId() {
@@ -56,20 +58,16 @@ public class Wdfragment extends BaseFragment {
     }
 
 
-  /*  @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }*/
-
     @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.grzl:
+                Intent intent1=new Intent(getContext(),GrzlActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.wdzj:
-//                Intent intent3=new Intent(getContext(),MyfootActivity.class);
-//                startActivity(intent3);
+                Intent intent3=new Intent(getContext(),MyfootActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.wdqb:
                 Intent intent2=new Intent(getContext(),WodbActivity.class);

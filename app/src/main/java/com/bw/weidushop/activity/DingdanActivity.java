@@ -164,7 +164,7 @@ public class DingdanActivity extends BaseActivity {
             public void fail(String msg) {
                 Toast.makeText(DingdanActivity.this, ""+msg, Toast.LENGTH_SHORT).show();
             }
-        }).requestData(user.getUserId(), user.getSessionId());
+        }).requestData(user.getUserId()+"", user.getSessionId());
     }
     //显示pop
     public void showPop(){

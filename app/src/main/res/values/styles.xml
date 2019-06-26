@@ -12,7 +12,11 @@
         <item name="colorControlNormal">#ffffff</item>
         <item name="colorControlActivated">#ffffff</item>
     </style>
+    <style name="Mystyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
 
+    </style>
     <!--个人中心页面的外部布局-->
     <style name="personal_ll">
         <item name="android:layout_width">match_parent</item>

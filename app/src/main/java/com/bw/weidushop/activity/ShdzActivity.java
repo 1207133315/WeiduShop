@@ -84,7 +84,7 @@ public class ShdzActivity extends BaseActivity {
             public void fail(String msg) {
 
             }
-        }).requestData(user.getUserId()+"", user.getSessionId());
+        }).requestData((Long)user.getUserId()+"", user.getSessionId());
     }
 
     @Override
@@ -96,5 +96,6 @@ public class ShdzActivity extends BaseActivity {
     public void onViewClicked() {
         Intent intent = new Intent(this, NewaddShouhuoActivity.class);
         startActivity(intent);
+        finish();
     }
 }
