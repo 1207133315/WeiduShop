@@ -55,5 +55,9 @@ dependencies {
 
     implementation 'com.facebook.fresco:fresco:1.9.0'
     implementation 'liji.library.dev:citypickerview:0.7.0'
+    implementation 'com.facebook.fresco:fresco:0.14.1'
+    //ImagePickers
+    implementation 'com.jaikydota.imagespickers:imagespickers:1.0.6'
+
 
 }

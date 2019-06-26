@@ -14,7 +14,8 @@ import com.bw.weidushop.R;
 import com.bw.weidushop.adapter.OrderlistAdapter;
 import com.bw.weidushop.bean.Orderlist;
 import com.bw.weidushop.bean.User;
-import com.bw.weidushop.dao.GetUser;
+
+import com.bw.weidushop.dao.GetDao;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -53,7 +54,7 @@ public class Zdfragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        user = GetUser.getuser();
+        user = GetDao.getuser();
         recyler_dingdan.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         requestData(0);
     }

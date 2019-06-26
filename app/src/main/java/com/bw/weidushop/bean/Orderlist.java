@@ -51,7 +51,7 @@ public class Orderlist {
                 '}';
     }
 
-    public static class OrderListBean implements MultiItemEntity {
+    public static class OrderListBean implements MultiItemEntity,Serializable{
         /**
          * detailList : [{"commentStatus":1,"commodityCount":1,"commodityId":29,"commodityName":"秋冬新款平底毛毛豆豆鞋加绒单鞋一脚蹬懒人鞋休闲","commodityPic":"http://172.17.8.100/images/small/commodity/nx/ddx/5/1.jpg,http://172.17.8.100/images/small/commodity/nx/ddx/5/2.jpg,http://172.17.8.100/images/small/commodity/nx/ddx/5/3.jpg,http://172.17.8.100/images/small/commodity/nx/ddx/5/4.jpg,http://172.17.8.100/images/small/commodity/nx/ddx/5/5.jpg","commodityPrice":278,"orderDetailId":5616}]
          * expressCompName : 京东快递

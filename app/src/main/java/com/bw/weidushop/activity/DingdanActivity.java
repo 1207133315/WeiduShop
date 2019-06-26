@@ -1,16 +1,20 @@
 package com.bw.weidushop.activity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bw.weidushop.R;
 import com.bw.weidushop.adapter.AddDDAdapter;
+import com.bw.weidushop.adapter.PopAddressAdapter;
 import com.bw.weidushop.bean.AddressBean;
 import com.bw.weidushop.bean.Dingdan;
 import com.bw.weidushop.bean.Result;
@@ -57,6 +61,7 @@ public class DingdanActivity extends BaseActivity {
     private List<ShopCarChildBean> lists;
     private User user;
     private AddressBean addressBean;
+    private Result<List<AddressBean>> beanResult;
     @Override
     protected int getView() {
         return R.layout.activity_dingdan;
@@ -128,9 +133,12 @@ public class DingdanActivity extends BaseActivity {
     public void showAddress() {
 
         new AddressPresenter(new RequestDataInterface() {
+
+
+
             @Override
             public void success(Object obj, Object... args) {
-                Result<List<AddressBean>> beanResult = (Result<List<AddressBean>>) obj;
+                beanResult = (Result<List<AddressBean>>) obj;
                 if (beanResult.getResult()!=null) {
                     yes.setVisibility(View.VISIBLE);
                     no.setVisibility(View.GONE);
@@ -146,8 +154,11 @@ public class DingdanActivity extends BaseActivity {
                 }else {
                     yes.setVisibility(View.GONE);
                     no.setVisibility(View.VISIBLE);
+
                 }
             }
+
+
 
             @Override
             public void fail(String msg) {
@@ -155,8 +166,31 @@ public class DingdanActivity extends BaseActivity {
             }
         }).requestData(user.getUserId(), user.getSessionId());
     }
+    //显示pop
+    public void showPop(){
+        View view=View.inflate(DingdanActivity.this,R.layout.address_itme,null);
+        RecyclerView recyclerView=view.findViewById(R.id.recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(DingdanActivity.this,LinearLayoutManager.VERTICAL,false));
+        PopAddressAdapter popAddressAdapter = new PopAddressAdapter(DingdanActivity.this);
+        popAddressAdapter.addList(beanResult.getResult());
 
-    @OnClick({R.id.add, R.id.recycler, R.id.count, R.id.price, R.id.no, R.id.name, R.id.phone, R.id.address, R.id.yes,R.id.dingdan})
+
+        recyclerView.setAdapter(popAddressAdapter);
+        final PopupWindow popupWindow = new PopupWindow(view,ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setHeight(900);
+        popupWindow.showAsDropDown(yes);
+        popAddressAdapter.setDataCall(new PopAddressAdapter.DataCall() {
+            @Override
+            public void xuanze(AddressBean addressBean) {
+                name.setText(addressBean.realName);
+                phone.setText(addressBean.phone);
+                address.setText(addressBean.address);
+                popupWindow.dismiss();
+            }
+        });
+    }
+    @OnClick({R.id.add, R.id.recycler, R.id.count, R.id.price, R.id.no, R.id.name, R.id.phone, R.id.address, R.id.yes,R.id.dingdan,R.id.other})
     public void onClick(View v) {
         switch (v.getId()) {
             default:
@@ -184,6 +218,9 @@ public class DingdanActivity extends BaseActivity {
             case R.id.address:
                 break;
             case R.id.yes:
+                break;
+            case R.id.other:
+               showPop();
                 break;
         }
     }
