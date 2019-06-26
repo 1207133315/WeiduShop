@@ -1,7 +1,10 @@
 package com.bw.weidushop.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +53,7 @@ public class LoginActivity extends BaseActivity implements RequestDataInterface 
     private String sp_pwd;
     private UserDao userDao;
     private String s;
-
+    private ProgressDialog progressDialog;
 
   /*  @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -111,6 +114,13 @@ public class LoginActivity extends BaseActivity implements RequestDataInterface 
             case R.id.pwd:
                 break;
             case R.id.eye_true:
+                if (!eye_true.isChecked()){
+                    pwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    pwd.setSelection(pwd.getText().toString().length());
+                }else{
+                    pwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    pwd.setSelection(pwd.getText().toString().length());
+                }
                 break;
             case R.id.isChecked:
                 break;
@@ -132,6 +142,11 @@ public class LoginActivity extends BaseActivity implements RequestDataInterface 
                     return;
                 }
                 presenter.requestData(phone, s);
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.setTitle("提示");
+                progressDialog.setMessage("正在登陆...");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 String phone = phoneh.getText().toString().trim();
                 String psw = pwd.getText().toString().trim();
@@ -157,7 +172,7 @@ public class LoginActivity extends BaseActivity implements RequestDataInterface 
                 Toast.makeText(this, "" + userResult.getMessage(), Toast.LENGTH_SHORT).show();
                 user.isLogin=0;
                 userDao.insertOrReplace(user);
-
+                progressDialog.dismiss();
                  Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

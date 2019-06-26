@@ -73,6 +73,7 @@ public interface IRequest {
     @GET("small/commodity/v1/findCommodityByKeyword")
     Observable<Result<List<SearchBean>>> searchBykeyword(@Query("keyword") String keyword, @Query("page") String page, @Query("count") String count);
 
+    //同步购物车
     @FormUrlEncoded
     @PUT("small/order/verify/v1/syncShoppingCart")
     Observable<Result> addShopCar(@Header("userId") int userId, @Header("sessionId") String sessionId, @Field("data") String data);
@@ -85,25 +86,22 @@ public interface IRequest {
     //圈子点赞
     @FormUrlEncoded
     @POST("small/circle/verify/v1/addCircleGreat")
-    Observable<Result> dianzan(@Header("userId") String userId, @Header("sessionId") String sessionId, @Field("circleId") String circleId);
+    Observable<Result> dianzan(@Header("userId") long userId, @Header("sessionId") String sessionId, @Field("circleId") String circleId);
 
     //取消点赞
 
     @DELETE("small/circle/verify/v1/cancelCircleGreat")
-    Observable<Result> Undianzan(@Header("userId") String userId, @Header("sessionId") String sessionId, @Query("circleId") String circleId);
+    Observable<Result> Undianzan(@Header("userId") long userId, @Header("sessionId") String sessionId, @Query("circleId") String circleId);
 
 
     //我的圈子
     @GET("small/circle/verify/v1/findMyCircleById")
-    Observable<Result<List<QuanZiBean>>> myQuanzi(@Header("userId") String userId,
+    Observable<Result<List<QuanZiBean>>> myQuanzi(@Header("userId") long userId,
                                                   @Header("sessionId") String sessionId,
-                                                  @Query("page") String page,
+                                                  @Query("page") int page,
                                                   @Query("count") String count);
 
-    //收货地址列表
-    @GET("small/user/verify/v1/receiveAddressList")
-    Observable<Result<List<AddressBean>>> addressList(@Header("userId") long userId,
-                                                      @Header("sessionId") String sessionId);
+
 
 
     //添加订单
@@ -125,6 +123,7 @@ public interface IRequest {
                                      @Header("sessionId")String sessionId,
                                      @Body MultipartBody body);
 
+    @GET("small/user/verify/v1/receiveAddressList")
     Observable<Result<List<AddressBean>>> addressList(@Header("userId") String userId, @Header("sessionId") String sessionId);
 
     @GET("small/user/verify/v1/findUserWallet")
@@ -132,11 +131,15 @@ public interface IRequest {
                                         @Header("sessionId") String sessionid,
                                         @Query("page") int page,
                                         @Query("count") int count);
+
+    //设置默认收货地址
     @FormUrlEncoded
     @POST("small/user/verify/v1/setDefaultReceiveAddress")
     Observable<Result> setDefaultReceiveAddress(@Header("userId") int userid,
                                                 @Header("sessionId") String sessionid,
                                                 @Field("id")int id);
+
+    //添加收货地址
     @FormUrlEncoded
     @POST("small/user/verify/v1/addReceiveAddress")
     Observable<Result> addAddress(@Header("userId") int userid,

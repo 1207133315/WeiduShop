@@ -19,6 +19,6 @@ public class UnDianZanPresenter extends BasePresenter {
 
     @Override
     public Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.Undianzan((String)args[0],(String)args[1],(String)args[2]);
+        return iRequest.Undianzan((long)args[0],(String)args[1],(String)args[2]);
     }
 }

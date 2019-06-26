@@ -14,7 +14,7 @@ import com.bw.weidushop.R;
 import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.core.RequestDataInterface;
-import com.bw.weidushop.dao.GetUser;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.presenter.AddReceiveAddressPresenter;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 
@@ -76,7 +76,7 @@ public class NewaddShouhuoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        user = GetUser.getuser();
+        user = GetDao.getuser();
     }
 
     @Override

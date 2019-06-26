@@ -20,6 +20,6 @@ public class DianZanPresenter extends BasePresenter {
 
     @Override
     public Observable getModel(IRequest iRequest, Object... args) {
-        return iRequest.dianzan((String)args[0],(String)args[1],(String)args[2]);
+        return iRequest.dianzan((long)args[0],(String)args[1],(String)args[2]);
     }
 }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -17,6 +18,12 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.bw.weidushop.R;
 import com.bw.weidushop.bean.QuanZiBean;
+import com.bw.weidushop.bean.Result;
+import com.bw.weidushop.bean.User;
+import com.bw.weidushop.core.RequestDataInterface;
+import com.bw.weidushop.dao.GetDao;
+import com.bw.weidushop.presenter.DianZanPresenter;
+import com.bw.weidushop.presenter.UnDianZanPresenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +70,7 @@ public class QuanZiAdapter extends RecyclerView.Adapter<QuanZiAdapter.ViewHolder
         } else {
             viewHolder.gridLayoutManager.setSpanCount(3);
     }
+        viewHolder.dianzanNum.setText(quanZiBean.greatNum+"");
         viewHolder.recyclerView.setLayoutManager(viewHolder.gridLayoutManager);
         viewHolder.childAdapter.notifyDataSetChanged();
         viewHolder.dianzan.setTag(quanZiBean);
@@ -73,11 +81,14 @@ public class QuanZiAdapter extends RecyclerView.Adapter<QuanZiAdapter.ViewHolder
                 QuanZiBean bean = (QuanZiBean) view.getTag();
                 boolean checked = ((CheckBox) view).isChecked();
                 bean.check=checked;
-
-                dianZan.dianzan(view,i,checked);
-
-
-
+                if (checked==true){
+                    dianZan(bean);
+                    bean.greatNum++;
+                }else {
+                    unDianZan(bean);
+                    bean.greatNum--;
+                }
+                notifyDataSetChanged();
             }
         });
         viewHolder.dianzanNum.setText(quanZiBean.greatNum+"");
@@ -85,6 +96,40 @@ public class QuanZiAdapter extends RecyclerView.Adapter<QuanZiAdapter.ViewHolder
         viewHolder.dianzanNum.setTag(quanZiBean);
 
 
+    }
+
+    //取消点赞
+    public void unDianZan(QuanZiBean bean){
+        User user = GetDao.getuser();
+         new UnDianZanPresenter(new RequestDataInterface() {
+             @Override
+             public void success(Object obj, Object... args) {
+                 final Result result = (Result) obj;
+                // Toast.makeText(context, ""+result.getMessage(), Toast.LENGTH_SHORT).show();
+             }
+
+             @Override
+             public void fail(String msg) {
+                // Toast.makeText(context, ""+msg, Toast.LENGTH_SHORT).show();
+             }
+         }).requestData(user.getUserId(),user.getSessionId(),bean.id+"");
+    }
+
+    //请求点赞
+    public void dianZan(QuanZiBean bean){
+         User user = GetDao.getuser();
+        new DianZanPresenter(new RequestDataInterface() {
+            @Override
+            public void success(Object obj, Object... args) {
+                final Result result = (Result) obj;
+                //Toast.makeText(context, ""+result.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void fail(String msg) {
+                //Toast.makeText(context, ""+msg, Toast.LENGTH_SHORT).show();
+            }
+        }).requestData(user.getUserId(),user.getSessionId(),bean.id+"");
     }
 
     @Override

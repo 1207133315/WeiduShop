@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bw.weidushop.R;
+import com.bw.weidushop.activity.MyQuanziActivity;
 import com.bw.weidushop.activity.ShdzActivity;
 import com.bw.weidushop.activity.WodbActivity;
+import com.bw.weidushop.activity.ZlActivity;
 import com.bw.weidushop.bean.User;
 import com.bw.weidushop.dao.GetDao;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -62,14 +64,13 @@ public class Wdfragment extends BaseFragment {
         unbinder.unbind();
     }*/
 
-    @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz})
+    @OnClick({R.id.grzl, R.id.wdzj, R.id.wdqb, R.id.wdshdz,R.id.wdqz})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.grzl:
                 break;
             case R.id.wdzj:
-//                Intent intent3=new Intent(getContext(),MyfootActivity.class);
-//                startActivity(intent3);
+
                 break;
             case R.id.wdqb:
                 Intent intent2=new Intent(getContext(),WodbActivity.class);
@@ -79,6 +80,11 @@ public class Wdfragment extends BaseFragment {
                 Intent intent=new Intent(getContext(),ShdzActivity.class);
                 startActivity(intent);
 
+                break;
+
+            case R.id.wdqz:
+                Intent intent1=new Intent(getContext(),MyQuanziActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
