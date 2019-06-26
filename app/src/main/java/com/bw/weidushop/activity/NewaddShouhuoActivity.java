@@ -16,6 +16,7 @@ import com.bw.weidushop.bean.User;
 import com.bw.weidushop.core.RequestDataInterface;
 
 import com.bw.weidushop.dao.GetDao;
+import com.bw.weidushop.dao.GetDao;
 import com.bw.weidushop.presenter.AddReceiveAddressPresenter;
 import com.lljjcoder.citypickerview.widget.CityPicker;
 
