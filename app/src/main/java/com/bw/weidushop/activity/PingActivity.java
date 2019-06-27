@@ -76,16 +76,12 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
     private ProgressDialog progressDialog;
     private String orderId;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ping);
         initView();
         Intent intent = getIntent();
-        Orderlist.OrderListBean.DetailListBean bean = (Orderlist.OrderListBean.DetailListBean) intent.getSerializableExtra("bean");
         orderId = intent.getStringExtra("orderId");
         bean = (Orderlist.OrderListBean.DetailListBean) intent.getSerializableExtra("bean");
         String commodityPic = bean.getCommodityPic();
@@ -124,9 +120,6 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.pinglun_pai:
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/head" + i + ".jpg")));
-                startActivityForResult(intent, 100);
                 new AlertDialog.Builder(PingActivity.this)
                         .setItems(itme, new DialogInterface.OnClickListener() {
                             @Override
@@ -228,54 +221,43 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK) {
-            SimpleDraweeView imageView = new SimpleDraweeView(PingActivity.this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 200);
-            params.setMargins(0, 0, 35, 0);
-            imageView.setLayoutParams(params);
-            linear.addView(imageView);
-            imageView.setImageURI(Environment.getExternalStorageDirectory() + "/head" + i + ".jpg");
-            i++;
-            if (data != null) {
-                switch (requestCode) {
-                    case 200:
+        if (data != null) {
+            switch (requestCode) {
+                case 200:
 
-                        List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
-                        paths.clear();
-                        paths.addAll(pathList);
+                    List<String> pathList = data.getStringArrayListExtra(ImageSelectorActivity.EXTRA_RESULT);
+                    paths.clear();
+                    paths.addAll(pathList);
 
-                        for (int i = 0; i < paths.size(); i++) {
-                            File file = new File(paths.get(i));
-                            files.add(file);
-                        }
+                    for (int i = 0; i < paths.size(); i++) {
+                        File file = new File(paths.get(i));
+                        files.add(file);
+                    }
 
-                        break;
-                }
-            } else {
-                Toast.makeText(PingActivity.this, "data为空 ！", Toast.LENGTH_LONG).show();
+                    break;
             }
+        } else {
+            Toast.makeText(PingActivity.this, "data为空 ！", Toast.LENGTH_LONG).show();
         }
-
-
     }
+
     @Override
-    public void onRequestPermissionsResult ( int requestCode, @NonNull String[] permissions,
-                                             @NonNull int[] grantResults){
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         //就多一个参数this
         PermissionsUtils.getInstance().onRequestPermissionsResult(this, requestCode, permissions, grantResults);
     }
     @Override
-    public void success (Object obj, Object...args){
+    public void success(Object obj, Object... args) {
         final Result result = (Result) obj;
-        Toast.makeText(this, "" + result.getMessage(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+result.getMessage(), Toast.LENGTH_SHORT).show();
         progressDialog.dismiss();
         finish();
     }
 
     @Override
-    public void fail (String msg){
-        Toast.makeText(this, "" + msg, Toast.LENGTH_SHORT).show();
+    public void fail(String msg) {
+        Toast.makeText(this, ""+msg, Toast.LENGTH_SHORT).show();
         progressDialog.dismiss();
     }
 }
