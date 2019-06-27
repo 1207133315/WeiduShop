@@ -9,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -60,6 +62,7 @@ public class Syfragment extends Fragment implements RequestDataInterface {
     private String sessionId;
     private List<String> list1;
     private List<PopBean> list2;
+    private LinearLayout viewById;
 
     @Nullable
     @Override
@@ -74,17 +77,17 @@ public class Syfragment extends Fragment implements RequestDataInterface {
     private void initView(View view) {
         final User user = GetDao.getuser();
         sessionId=user.getSessionId();
-
+        viewById = view.findViewById(R.id.ttt);
         search = view.findViewById(R.id.search);
         other = view.findViewById(R.id.other);
         text = view.findViewById(R.id.text);
-        text.setOnClickListener(new View.OnClickListener() {
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),SearchActivity.class));
             }
         });
-        search.setOnClickListener(new View.OnClickListener() {
+        other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 View view1 = View.inflate(getContext(), R.layout.popwindow, null);
@@ -93,7 +96,7 @@ public class Syfragment extends Fragment implements RequestDataInterface {
                 popupWindow.setFocusable(true);
                 popupWindow.setOutsideTouchable(true);
                 popupWindow.setBackgroundDrawable(new BitmapDrawable());
-                popupWindow.showAsDropDown(search,0,15);
+                popupWindow.showAsDropDown(other,0,15);
                 RecyclerView recy1 = view1.findViewById(R.id.poprecy1);
                 RecyclerView recy2 = view1.findViewById(R.id.poprecy2);
                 list1 = new ArrayList<>();

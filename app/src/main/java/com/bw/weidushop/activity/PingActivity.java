@@ -228,14 +228,7 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK) {
-            SimpleDraweeView imageView = new SimpleDraweeView(PingActivity.this);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(200, 200);
-            params.setMargins(0, 0, 35, 0);
-            imageView.setLayoutParams(params);
-            linear.addView(imageView);
-            imageView.setImageURI(Environment.getExternalStorageDirectory() + "/head" + i + ".jpg");
-            i++;
+
             if (data != null) {
                 switch (requestCode) {
                     case 200:
@@ -257,7 +250,7 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-    }
+
     @Override
     public void onRequestPermissionsResult ( int requestCode, @NonNull String[] permissions,
                                              @NonNull int[] grantResults){
