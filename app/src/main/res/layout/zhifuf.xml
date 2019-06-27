@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:alpha="0.8"
+    android:background="#4f4f4f"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="@dimen/dp_100"
+        android:id="@+id/img_zhifu"
+        android:src="@mipmap/zfsuccess"
+        android:layout_marginTop="@dimen/dp_152"
+        android:layout_centerHorizontal="true"
+        android:layout_height="@dimen/dp_100" />
+    <TextView
+        android:id="@+id/tet"
+        android:text="支付失败"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_zhifu"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_20"/>
+    <TextView
+        android:layout_below="@+id/tet"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_centerHorizontal="true"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_12"
+        android:lineHeight="@dimen/dp_20"
+        android:singleLine="false"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="暂未开通微信与支付宝支付\n请选择余额支付"/>
+    <Button
+        android:id="@+id/fhzy"
+        android:layout_below="@+id/tet"
+        android:layout_marginTop="@dimen/dp_100"
+        android:text="继续支付"
+        android:textColor="#fff"
+        android:textSize="@dimen/sp_14"
+        android:background="@drawable/buttonshouhuo"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/dp_108"
+        android:layout_height="@dimen/dp_40" />
+
+</RelativeLayout>

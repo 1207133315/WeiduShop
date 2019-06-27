@@ -1,6 +1,7 @@
 package com.bw.weidushop.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,14 +9,22 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.bw.weidushop.R;
+import com.bw.weidushop.activity.PayActivity;
 import com.bw.weidushop.adapter.OrderlistAdapter;
 import com.bw.weidushop.bean.Orderlist;
+import com.bw.weidushop.bean.Result;
 import com.bw.weidushop.bean.User;
 
+import com.bw.weidushop.core.RequestDataInterface;
 import com.bw.weidushop.dao.GetDao;
+import com.bw.weidushop.presenter.ConfirmReceipt;
+import com.bw.weidushop.presenter.DeleteOrderPresenter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -88,7 +97,7 @@ public class Zdfragment extends BaseFragment {
                 super.run();
                 OkHttpClient client = new OkHttpClient.Builder().build();
                 Log.d("Zdfragment", "user.getUserId():" + user.getUserId()+user.getSessionId());
-                Request request = new Request.Builder().get().url("http://mobile.bwstudent.com/small/order/verify/v1/findOrderListByStatus?status=" + i + "&page=1&count=8")
+                final Request request = new Request.Builder().get().url("http://mobile.bwstudent.com/small/order/verify/v1/findOrderListByStatus?status=" + i + "&page=1&count=8")
                         .addHeader("userId", user.getUserId() + "")
                         .addHeader("sessionId", user.getSessionId())
                         .build();
@@ -99,7 +108,7 @@ public class Zdfragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onResponse(Call call, Response response) throws IOException {
+                    public void onResponse(final Call call, Response response) throws IOException {
                         String string = response.body().string();
                         Gson gson = new Gson();
                         final Orderlist orderlist = gson.fromJson(string, Orderlist.class);
@@ -108,6 +117,49 @@ public class Zdfragment extends BaseFragment {
                             public void run() {
                                 OrderlistAdapter adapter = new OrderlistAdapter(orderlist.getOrderList());
                                 recyler_dingdan.setAdapter(adapter);
+                                adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                                    @Override
+                                    public void onItemChildClick(final BaseQuickAdapter adapter, View view, final int position) {
+                                        switch (view.getId()){
+                                            case R.id.qzf:
+                                                double v = orderlist.getOrderList().get(position).getPayAmount();
+                                                Intent intent=new Intent(getContext(),PayActivity.class);
+                                                intent.putExtra("price",v);
+                                                intent.putExtra("orderId",orderlist.getOrderList().get(position).getOrderId());
+                                                startActivity(intent);
+                                                break;
+                                            case R.id.qxdd:
+                                                new DeleteOrderPresenter(new RequestDataInterface() {
+                                                    @Override
+                                                    public void success(Object obj, Object... args) {
+                                                        orderlist.getOrderList().remove(position);
+                                                        adapter.notifyDataSetChanged();
+                                                    }
+
+                                                    @Override
+                                                    public void fail(String msg) {
+
+                                                    }
+                                                }).requestData((int)GetDao.getuser().getUserId(),GetDao.getuser().getSessionId(),orderlist.getOrderList().get(position).getOrderId());
+                                                break;
+                                            case R.id.qrsh:
+                                                    new ConfirmReceipt(new RequestDataInterface() {
+                                                        @Override
+                                                        public void success(Object obj, Object... args) {
+                                                            Result result = (Result) obj;
+                                                            Toast.makeText(getContext(), result.getMessage(), Toast.LENGTH_SHORT).show();
+                                                        }
+
+                                                        @Override
+                                                        public void fail(String msg) {
+
+                                                        }
+                                                    }).requestData((int)GetDao.getuser().getUserId(),GetDao.getuser().getSessionId(),orderlist.getOrderList().get(position).getOrderId());
+                                                break;
+                                        }
+
+                                    }
+                                });
                             }
                         });
 

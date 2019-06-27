@@ -57,7 +57,9 @@ public class OrderlistAdapter extends BaseMultiItemQuickAdapter<Orderlist.OrderL
             case 1:
                 helper.setText(R.id.ddh_content,"WD"+item.getOrderId().substring(0,15));
                 helper.setText(R.id.order_date,format1);
-                helper.setText(R.id.order_content,Html.fromHtml("共<font color='#FF0000'>"+item.getDetailList().size()+"</font>件商品，需付款<font color='#FF0000'>"+item.getDetailList().get(0).getCommodityPrice()+"0</font>元"));
+                helper.setText(R.id.order_content,Html.fromHtml("共<font color='#FF0000'>"+item.getDetailList().size()+"</font>件商品，需付款<font color='#FF0000'>"+item.getPayAmount()+"0</font>元"));
+                helper.addOnClickListener(R.id.qzf);
+                helper.addOnClickListener(R.id.qxdd);
                 Orderlist2Adapter adapter = new Orderlist2Adapter(item.getDetailList(),1);
                 RecyclerView view = helper.getView(R.id.recyler_orderlist2);
                 view.setLayoutManager(new LinearLayoutManager(mContext,LinearLayoutManager.VERTICAL,false));
@@ -72,6 +74,7 @@ public class OrderlistAdapter extends BaseMultiItemQuickAdapter<Orderlist.OrderL
                 view1.setAdapter(adapter1);
                 helper.setText(R.id.order_paijiangongsi1,item.getExpressCompName());
                 helper.setText(R.id.order_kuaididanhao1,item.getOrderId().substring(9));
+                helper.addOnClickListener(R.id.qrsh);
                 break;
             case 3:
                 helper.setText(R.id.ddh_content,"WD"+item.getOrderId().substring(0,15));

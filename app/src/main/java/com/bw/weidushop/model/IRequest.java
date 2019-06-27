@@ -168,4 +168,23 @@ public interface IRequest {
                                      @Field("oldPwd")String oldPwd,
                                      @Field("newPwd")String newPwd
     );
+    //支付
+    @FormUrlEncoded
+    @POST("small/order/verify/v1/pay")
+    Observable<Result> pay(@Header("userId") int userid,
+                           @Header("sessionId") String sessionid,
+                           @Field("orderId")String orderId,
+                           @Field("payType")int payType);
+    //删除订单
+    @DELETE("small/order/verify/v1/deleteOrder")
+    Observable<Result> deleteOrder(@Header("userId") int userid,
+                                   @Header("sessionId") String sessionid,
+                                   @Query("orderId")String orderId);
+
+    //收货
+    @FormUrlEncoded
+    @PUT("small/order/verify/v1/confirmReceipt")
+    Observable<Result> confirmReceipt(@Header("userId") int userid,
+                                      @Header("sessionId") String sessionid,
+                                      @Field("orderId") String orderId);
 }
