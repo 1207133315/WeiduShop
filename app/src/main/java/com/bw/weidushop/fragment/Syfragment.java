@@ -9,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -58,6 +60,7 @@ public class Syfragment extends Fragment implements RequestDataInterface {
     private String sessionId;
     private List<String> list1;
     private List<PopBean> list2;
+    private LinearLayout viewById;
 
     @Nullable
     @Override
@@ -72,19 +75,67 @@ public class Syfragment extends Fragment implements RequestDataInterface {
     private void initView(View view) {
         final User user = GetDao.getuser();
         sessionId=user.getSessionId();
-
+        viewById = view.findViewById(R.id.ttt);
         search = view.findViewById(R.id.search);
         other = view.findViewById(R.id.other);
         text = view.findViewById(R.id.text);
-        text.setOnClickListener(new View.OnClickListener() {
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(),SearchActivity.class));
             }
         });
-        search.setOnClickListener(new View.OnClickListener() {
+        other.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                View view1 = View.inflate(getContext(), R.layout.popwindow, null);
+                PopupWindow popupWindow = new PopupWindow(view,ViewGroup.LayoutParams.MATCH_PARENT,500);
+                popupWindow.setTouchable(true);
+                popupWindow.setFocusable(true);
+                popupWindow.setOutsideTouchable(true);
+                popupWindow.setBackgroundDrawable(new BitmapDrawable());
+                popupWindow.showAsDropDown(other,0,15);
+                RecyclerView recy1 = view1.findViewById(R.id.poprecy1);
+                RecyclerView recy2 = view1.findViewById(R.id.poprecy2);
+                list1 = new ArrayList<>();
+                list1.add("男装");
+                list1.add("女装");
+                list1.add("女鞋");
+                list1.add("T恤");
+                list1.add("美妆护肤");
+                list1.add("手机数码");
+                PopwindowAdapter01 adapter01 = new PopwindowAdapter01(R.layout.popwindow01, list1);
+                LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                recy1.setLayoutManager(manager);
+                recy1.setAdapter(adapter01);
+                list2 = new ArrayList<>();
+                list2.add(new PopBean(R.mipmap.icon_sweater,"打底毛衣"));
+                list2.add(new PopBean(R.mipmap.icon_pants,"裤装"));
+                list2.add(new PopBean(R.mipmap.icon_skirt,"裙装"));
+                list2.add(new PopBean(R.mipmap.icon_coat,"外套"));
+                list2.add(new PopBean(R.mipmap.icon_hoodie,"卫衣"));
+                LinearLayoutManager manager2 = new LinearLayoutManager(getContext());
+                manager2.setOrientation(LinearLayoutManager.HORIZONTAL);
+                recy2.setLayoutManager(manager2);
+                PopwindowAdapter02 adapter02 = new PopwindowAdapter02(R.layout.popwindow02, list2);
+                recy2.setAdapter(adapter02);
+                adapter01.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        Intent intent=new Intent(getContext(),SearchActivity.class);
+                        intent.putExtra("goods", list1.get(position));
+                        startActivity(intent);
+                    }
+                });
+                adapter02.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        Intent intent=new Intent(getContext(),SearchActivity.class);
+                        intent.putExtra("goods", list2.get(position).getText());
+                        startActivity(intent);
+                    }
+                });
             }
         });
         rxxplist = view.findViewById(R.id.rxxplist);

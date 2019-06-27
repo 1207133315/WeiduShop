@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="@dimen/dp_100"
         android:id="@+id/img_zhifu"
-        android:src="@mipmap/zfsuccess"
+        android:src="@mipmap/zffailure"
         android:layout_marginTop="@dimen/dp_152"
         android:layout_centerHorizontal="true"
         android:layout_height="@dimen/dp_100" />

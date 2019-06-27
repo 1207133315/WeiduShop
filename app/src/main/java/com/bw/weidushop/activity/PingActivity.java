@@ -120,6 +120,9 @@ public class PingActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.pinglun_pai:
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/head" + i + ".jpg")));
+                startActivityForResult(intent, 100);
                 new AlertDialog.Builder(PingActivity.this)
                         .setItems(itme, new DialogInterface.OnClickListener() {
                             @Override

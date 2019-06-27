@@ -12,6 +12,7 @@
 
         >
         <LinearLayout
+            android:id="@+id/ttt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_30"
             android:orientation="horizontal"
