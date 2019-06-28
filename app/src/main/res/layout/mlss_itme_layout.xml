@@ -12,7 +12,7 @@
     android:layout_marginTop="@dimen/dp_10"
     android:layout_marginRight="@dimen/dp_20"
     android:layout_marginLeft="@dimen/dp_20"
-    android:background="@drawable/lay_yy"
+    android:background="@drawable/lay_xx"
     >
 
     <ImageView

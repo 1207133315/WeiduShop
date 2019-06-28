@@ -22,8 +22,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bw.weidushop.R;
 import com.bw.weidushop.activity.SearchActivity;
-import com.bw.weidushop.adapter.PopwindowAdapter01;
-import com.bw.weidushop.adapter.PopwindowAdapter02;
 import com.bw.weidushop.adapter.RecyclerViewAdpater;
 import com.bw.weidushop.bean.BannerBean;
 import com.bw.weidushop.bean.ImageBean;
