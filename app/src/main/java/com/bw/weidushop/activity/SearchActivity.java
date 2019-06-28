@@ -1,5 +1,6 @@
 package com.bw.weidushop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -35,12 +36,20 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         initView();
+
         presenter = new SearchPresenter(this);
         mRecycler.setLayoutManager(new GridLayoutManager(this,2));
         adapter = new SearchAdapter(this);
+
+        Intent intent = getIntent();
+        String goods = intent.getStringExtra("goods");
+        if (goods != null) {
+            mText.setText(goods.trim());
+            s=goods.trim();
+            presenter.requestData(aa, s,"10");
+        }
         mRecycler.setAdapter(adapter);
         mRecycler.refresh();
-
     }
 
     private void initView() {

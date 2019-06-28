@@ -91,7 +91,7 @@ public class Syfragment extends Fragment implements RequestDataInterface {
             @Override
             public void onClick(View view) {
                 View view1 = View.inflate(getContext(), R.layout.popwindow, null);
-                PopupWindow popupWindow = new PopupWindow(view,ViewGroup.LayoutParams.MATCH_PARENT,500);
+                PopupWindow popupWindow = new PopupWindow(view1,ViewGroup.LayoutParams.MATCH_PARENT,500);
                 popupWindow.setTouchable(true);
                 popupWindow.setFocusable(true);
                 popupWindow.setOutsideTouchable(true);
